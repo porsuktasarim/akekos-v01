@@ -1,0 +1,89 @@
+<nav id="sidebar" class="bg-dark text-white d-flex flex-column" style="min-width:260px;max-width:260px;min-height:100vh;transition:all .3s;">
+  <!-- Logo -->
+  <div class="sidebar-header p-3 border-bottom border-secondary">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-shield-fill-check fs-4 text-warning"></i>
+      <div>
+        <div class="fw-bold text-white lh-1">AKEKOS</div>
+        <small class="text-secondary" style="font-size:.65rem;">Arama Kurtarma Sistemi</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Org Bilgisi -->
+  <% if (typeof currentOrg !== 'undefined' && currentOrg) { %>
+  <div class="px-3 py-2 bg-secondary bg-opacity-25 border-bottom border-secondary">
+    <small class="text-secondary d-block"><i class="bi bi-building me-1"></i>Organizasyon</small>
+    <span class="text-white small fw-semibold"><%= currentOrg.name %></span>
+  </div>
+  <% } %>
+
+  <!-- Menü -->
+  <ul class="nav flex-column flex-grow-1 py-2">
+    <li class="nav-item">
+      <a class="nav-link text-white <%= currentPath === '/dashboard' ? 'active bg-warning text-dark rounded mx-2' : 'hover-bg' %>" href="/dashboard">
+        <i class="bi bi-speedometer2 me-2"></i><%= t('nav.dashboard') %>
+      </a>
+    </li>
+
+    <li class="sidebar-heading px-3 pt-3 pb-1">
+      <small class="text-uppercase text-secondary fw-bold" style="font-size:.65rem;letter-spacing:.08em;">Modüller</small>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-white <%= currentPath.startsWith('/inventory') ? 'active bg-warning text-dark rounded mx-2' : '' %>" href="/inventory">
+        <i class="bi bi-boxes me-2"></i><%= t('nav.inventory') %>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white <%= currentPath.startsWith('/personnel') ? 'active bg-warning text-dark rounded mx-2' : '' %>" href="/personnel">
+        <i class="bi bi-people-fill me-2"></i><%= t('nav.personnel') %>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white <%= currentPath.startsWith('/inspection') ? 'active bg-warning text-dark rounded mx-2' : '' %>" href="/inspection">
+        <i class="bi bi-clipboard2-check-fill me-2"></i><%= t('nav.inspection') %>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white <%= currentPath.startsWith('/operations') ? 'active bg-warning text-dark rounded mx-2' : '' %>" href="/operations">
+        <i class="bi bi-geo-alt-fill me-2"></i><%= t('nav.operations') %>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white <%= currentPath.startsWith('/reports') ? 'active bg-warning text-dark rounded mx-2' : '' %>" href="/reports">
+        <i class="bi bi-file-earmark-bar-graph-fill me-2"></i><%= t('nav.reports') %>
+      </a>
+    </li>
+
+    <% if (user && user.role === 'admin') { %>
+    <li class="sidebar-heading px-3 pt-3 pb-1">
+      <small class="text-uppercase text-secondary fw-bold" style="font-size:.65rem;letter-spacing:.08em;">Yönetim</small>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white <%= currentPath.startsWith('/admin/organizations') ? 'active bg-warning text-dark rounded mx-2' : '' %>" href="/admin/organizations">
+        <i class="bi bi-diagram-3-fill me-2"></i><%= t('nav.organizations') %>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white <%= currentPath.startsWith('/admin/users') ? 'active bg-warning text-dark rounded mx-2' : '' %>" href="/admin/users">
+        <i class="bi bi-person-badge-fill me-2"></i>Kullanıcılar
+      </a>
+    </li>
+    <% } %>
+  </ul>
+
+  <!-- Alt kısım -->
+  <div class="p-3 border-top border-secondary">
+    <div class="d-flex align-items-center gap-2 mb-2">
+      <i class="bi bi-person-circle fs-5 text-secondary"></i>
+      <div class="overflow-hidden">
+        <div class="text-white small fw-semibold text-truncate"><%= user ? user.fullName || (user.firstName + ' ' + user.lastName) : '' %></div>
+        <div class="text-secondary" style="font-size:.7rem;"><%= user ? t('roles.' + user.role) : '' %></div>
+      </div>
+    </div>
+    <a href="/auth/logout" class="btn btn-outline-danger btn-sm w-100">
+      <i class="bi bi-box-arrow-right me-1"></i><%= t('nav.logout') %>
+    </a>
+  </div>
+</nav>
