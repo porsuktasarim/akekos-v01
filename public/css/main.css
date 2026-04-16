@@ -1,0 +1,93 @@
+/* =============================================
+ * AKEKOS - Ana CSS
+ * ============================================= */
+
+:root {
+  --akekos-primary:   #ffc107;
+  --akekos-dark:      #212529;
+  --akekos-sidebar-w: 260px;
+  --akekos-sidebar-collapsed: 60px;
+}
+
+/* Sidebar */
+#sidebar {
+  width: var(--akekos-sidebar-w);
+  min-width: var(--akekos-sidebar-w);
+  transition: width 0.3s ease, min-width 0.3s ease;
+  overflow: hidden;
+  z-index: 1000;
+}
+#sidebar.collapsed {
+  width: var(--akekos-sidebar-collapsed);
+  min-width: var(--akekos-sidebar-collapsed);
+}
+#sidebar.collapsed .nav-link span,
+#sidebar.collapsed .sidebar-heading,
+#sidebar.collapsed .sidebar-header > div > div,
+#sidebar.collapsed .fw-bold,
+#sidebar.collapsed small { display: none !important; }
+#sidebar.collapsed .nav-link { justify-content: center; padding: 0.6rem 0; }
+#sidebar.collapsed .nav-link i { font-size: 1.2rem; margin: 0 !important; }
+
+/* Nav Links */
+#sidebar .nav-link {
+  border-radius: 0.375rem;
+  margin: 0.1rem 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  transition: background-color 0.15s ease;
+}
+#sidebar .nav-link:hover:not(.active) { background-color: rgba(255,255,255,0.08); }
+
+/* Cards */
+.hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.hover-lift:hover { transform: translateY(-3px); box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.12) !important; }
+
+/* Page Content */
+#page-content-wrapper { min-height: 100vh; background: #f8f9fa; }
+
+/* Tables */
+.table > :not(caption) > * > * { padding: 0.6rem 0.75rem; }
+
+/* Badges */
+.badge { font-weight: 500; }
+
+/* Report Bar */
+.akekos-report-bar {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    z-index: 1050;
+    transform: translateX(-100%);
+  }
+  #sidebar.mobile-open { transform: translateX(0); }
+  #sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1040;
+  }
+}
+
+/* Utils */
+.text-xs { font-size: 0.75rem; }
+.bg-warning-subtle { background-color: #fff3cd; }
+.bg-success-subtle { background-color: #d1e7dd; }
+.bg-danger-subtle  { background-color: #f8d7da; }
+.bg-info-subtle    { background-color: #cff4fc; }
+.bg-primary-subtle { background-color: #cfe2ff; }
+.bg-secondary-subtle { background-color: #e2e3e5; }
