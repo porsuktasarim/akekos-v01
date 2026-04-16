@@ -1,0 +1,32 @@
+# Bağımlılıklar
+node_modules/
+
+# Ortam değişkenleri
+.env
+.env.local
+.env.production
+
+# Log dosyaları
+logs/
+*.log
+npm-debug.log*
+
+# Yükleme klasörü (geliştirme)
+uploads/
+
+# Test kapsamı
+coverage/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
