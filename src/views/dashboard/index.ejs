@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gösterge Paneli | AKEKOS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-light">
+<div class="d-flex" id="wrapper">
+  <%- include('../partials/sidebar') %>
+  <div id="page-content-wrapper" class="flex-grow-1 d-flex flex-column">
+    <%- include('../partials/topbar') %>
+    <main class="container-fluid py-3 px-4 flex-grow-1">
+      <%- include('../partials/flash') %>
+
+      <!-- Başlık -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="mb-0 fw-bold"><i class="bi bi-speedometer2 me-2 text-warning"></i>Gösterge Paneli</h4>
+        <span class="badge bg-secondary small">
+          <%= new Date().toLocaleDateString('tr-TR', {weekday:'long', year:'numeric', month:'long', day:'numeric'}) %>
+        </span>
+      </div>
+
+      <!-- Hoş Geldin -->
+      <div class="alert alert-warning alert-dismissible border-0 shadow-sm mb-4" role="alert">
+        <i class="bi bi-hand-wave me-2"></i>
+        Hoş geldiniz, <strong><%= user.firstName %> <%= user.lastName %></strong>!
+        AKEKOS sistemine bağlandınız. (<%= t('roles.' + user.role) %>)
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+
+      <% if (user.role === 'admin') { %>
+      <!-- Admin İstatistikleri -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body d-flex align-items-center gap-3">
+              <div class="rounded-3 p-3 bg-primary bg-opacity-10">
+                <i class="bi bi-diagram-3-fill fs-4 text-primary"></i>
+              </div>
+              <div>
+                <div class="fw-bold fs-4"><%= stats.totalOrgs || 0 %></div>
+                <div class="text-muted small">Toplam Organizasyon</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body d-flex align-items-center gap-3">
+              <div class="rounded-3 p-3 bg-success bg-opacity-10">
+                <i class="bi bi-check-circle-fill fs-4 text-success"></i>
+              </div>
+              <div>
+                <div class="fw-bold fs-4"><%= stats.activeOrgs || 0 %></div>
+                <div class="text-muted small">Aktif Organizasyon</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body d-flex align-items-center gap-3">
+              <div class="rounded-3 p-3 bg-info bg-opacity-10">
+                <i class="bi bi-people-fill fs-4 text-info"></i>
+              </div>
+              <div>
+                <div class="fw-bold fs-4"><%= stats.totalUsers || 0 %></div>
+                <div class="text-muted small">Toplam Kullanıcı</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body d-flex align-items-center gap-3">
+              <div class="rounded-3 p-3 bg-warning bg-opacity-10">
+                <i class="bi bi-person-check-fill fs-4 text-warning"></i>
+              </div>
+              <div>
+                <div class="fw-bold fs-4"><%= stats.activeUsers || 0 %></div>
+                <div class="text-muted small">Aktif Kullanıcı</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+      <!-- Modül Kartları -->
+      <div class="row g-3">
+        <div class="col-md-6 col-xl-4">
+          <div class="card border-0 shadow-sm h-100 hover-lift">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="rounded-3 p-2 bg-primary bg-opacity-10">
+                  <i class="bi bi-boxes fs-3 text-primary"></i>
+                </div>
+                <h6 class="mb-0 fw-semibold">Envanter Yönetimi</h6>
+              </div>
+              <p class="text-muted small mb-3">Ekipman takibi, stok yönetimi ve envanter sayımı.</p>
+              <a href="/inventory" class="btn btn-outline-primary btn-sm w-100">Modüle Git <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+          <div class="card border-0 shadow-sm h-100 hover-lift">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="rounded-3 p-2 bg-success bg-opacity-10">
+                  <i class="bi bi-people-fill fs-3 text-success"></i>
+                </div>
+                <h6 class="mb-0 fw-semibold">Personel Yönetimi</h6>
+              </div>
+              <p class="text-muted small mb-3">Personel bilgileri, yetkinlik ve sertifika takibi.</p>
+              <a href="/personnel" class="btn btn-outline-success btn-sm w-100">Modüle Git <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+          <div class="card border-0 shadow-sm h-100 hover-lift">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="rounded-3 p-2 bg-warning bg-opacity-10">
+                  <i class="bi bi-clipboard2-check-fill fs-3 text-warning"></i>
+                </div>
+                <h6 class="mb-0 fw-semibold">Sayım ve Kontrol</h6>
+              </div>
+              <p class="text-muted small mb-3">Ekipman sayımı, kontrol listeleri ve durum takibi.</p>
+              <a href="/inspection" class="btn btn-outline-warning btn-sm w-100">Modüle Git <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+          <div class="card border-0 shadow-sm h-100 hover-lift">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="rounded-3 p-2 bg-danger bg-opacity-10">
+                  <i class="bi bi-geo-alt-fill fs-3 text-danger"></i>
+                </div>
+                <h6 class="mb-0 fw-semibold">Operasyon Yönetimi</h6>
+              </div>
+              <p class="text-muted small mb-3">Arama kurtarma operasyonları planlama ve takip.</p>
+              <a href="/operations" class="btn btn-outline-danger btn-sm w-100">Modüle Git <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+          <div class="card border-0 shadow-sm h-100 hover-lift">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="rounded-3 p-2 bg-info bg-opacity-10">
+                  <i class="bi bi-file-earmark-bar-graph-fill fs-3 text-info"></i>
+                </div>
+                <h6 class="mb-0 fw-semibold">Raporlama</h6>
+              </div>
+              <p class="text-muted small mb-3">PDF, Excel raporları ve analiz belgeleri.</p>
+              <a href="/reports" class="btn btn-outline-info btn-sm w-100">Modüle Git <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <% if (user.role === 'admin') { %>
+        <div class="col-md-6 col-xl-4">
+          <div class="card border-0 shadow-sm h-100 hover-lift">
+            <div class="card-body p-4">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="rounded-3 p-2 bg-secondary bg-opacity-10">
+                  <i class="bi bi-diagram-3-fill fs-3 text-secondary"></i>
+                </div>
+                <h6 class="mb-0 fw-semibold">Organizasyonlar</h6>
+              </div>
+              <p class="text-muted small mb-3">Alt ekip yapısı, şube yönetimi ve organizasyon ağacı.</p>
+              <a href="/admin/organizations" class="btn btn-outline-secondary btn-sm w-100">Yönet <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+    </main>
+    <%- include('../partials/footer') %>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
