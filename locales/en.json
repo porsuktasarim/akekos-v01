@@ -1,0 +1,105 @@
+{
+  "general": {
+    "appName": "AKEKOS",
+    "appFullName": "Search and Rescue Equipment Control and Operations System",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "close": "Close",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "loading": "Loading...",
+    "noData": "No data found.",
+    "actions": "Actions",
+    "status": {
+      "active": "Active",
+      "passive": "Passive",
+      "pending": "Pending",
+      "archived": "Archived"
+    },
+    "errors": {
+      "general": "An error occurred. Please try again.",
+      "notFound": "Record not found.",
+      "unauthorized": "You are not authorized for this action.",
+      "forbidden": "Access to this resource is forbidden.",
+      "validation": "Please fix the errors in the form."
+    }
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "inventory": "Inventory Management",
+    "personnel": "Personnel Management",
+    "inspection": "Inspection & Counting",
+    "operations": "Operations Management",
+    "reports": "Reports",
+    "organizations": "Organizations",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Welcome to AKEKOS",
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot password",
+      "loginFailed": "Invalid email or password.",
+      "accountLocked": "Your account is temporarily locked. Please try again in {{minutes}} minutes.",
+      "attemptsRemaining": "{{count}} attempts remaining."
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subtitle": "We will send a reset link to your email.",
+      "email": "Email",
+      "submit": "Send Reset Link",
+      "successMsg": "Password reset link has been sent to your email.",
+      "backToLogin": "Back to login"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "submit": "Update Password",
+      "successMsg": "Your password has been updated successfully.",
+      "invalidToken": "Invalid or expired link."
+    }
+  },
+  "org": {
+    "title": "Organizations",
+    "add": "Add Organization",
+    "edit": "Edit Organization",
+    "name": "Organization Name",
+    "slug": "Slug",
+    "type": "Type",
+    "parent": "Parent Organization",
+    "level": "Level",
+    "isActive": "Active",
+    "types": {
+      "merkez": "Headquarters",
+      "bolge": "Region",
+      "il": "Province",
+      "ilce": "District",
+      "birim": "Unit"
+    },
+    "tree": "Organization Tree"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "koordinator": "Coordinator",
+    "takim_lideri": "Team Leader",
+    "personel": "Personnel",
+    "gonullu": "Volunteer",
+    "gozlemci": "Observer"
+  }
+}
