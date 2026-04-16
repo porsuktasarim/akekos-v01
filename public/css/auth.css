@@ -1,0 +1,5 @@
+/* AKEKOS Auth Sayfaları */
+body { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+.card { border-radius: 1rem; }
+.btn-warning { background-color: #ffc107; border-color: #ffc107; color: #212529; }
+.btn-warning:hover { background-color: #ffca2c; }
