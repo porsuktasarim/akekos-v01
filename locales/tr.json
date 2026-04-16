@@ -1,0 +1,105 @@
+{
+  "general": {
+    "appName": "AKEKOS",
+    "appFullName": "Arama Kurtarma Ekipman Kontrol ve Operasyon Sistemi",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "view": "Görüntüle",
+    "add": "Ekle",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "export": "Dışa Aktar",
+    "import": "İçe Aktar",
+    "close": "Kapat",
+    "confirm": "Onayla",
+    "yes": "Evet",
+    "no": "Hayır",
+    "loading": "Yükleniyor...",
+    "noData": "Veri bulunamadı.",
+    "actions": "İşlemler",
+    "status": {
+      "active": "Aktif",
+      "passive": "Pasif",
+      "pending": "Beklemede",
+      "archived": "Arşivlendi"
+    },
+    "errors": {
+      "general": "Bir hata oluştu. Lütfen tekrar deneyin.",
+      "notFound": "Kayıt bulunamadı.",
+      "unauthorized": "Bu işlem için yetkiniz bulunmuyor.",
+      "forbidden": "Bu kaynağa erişim yasak.",
+      "validation": "Lütfen formdaki hataları düzeltin."
+    }
+  },
+  "nav": {
+    "dashboard": "Gösterge Paneli",
+    "inventory": "Envanter Yönetimi",
+    "personnel": "Personel Yönetimi",
+    "inspection": "Sayım ve Kontrol",
+    "operations": "Operasyon Yönetimi",
+    "reports": "Raporlama",
+    "organizations": "Organizasyonlar",
+    "settings": "Ayarlar",
+    "profile": "Profil",
+    "logout": "Çıkış Yap"
+  },
+  "auth": {
+    "login": {
+      "title": "Giriş Yap",
+      "subtitle": "AKEKOS sistemine hoş geldiniz",
+      "email": "E-posta",
+      "password": "Şifre",
+      "rememberMe": "Beni hatırla",
+      "submit": "Giriş Yap",
+      "forgotPassword": "Şifremi unuttum",
+      "loginFailed": "E-posta veya şifre hatalı.",
+      "accountLocked": "Hesabınız geçici olarak kilitlendi. Lütfen {{minutes}} dakika sonra tekrar deneyin.",
+      "attemptsRemaining": "{{count}} deneme hakkınız kaldı."
+    },
+    "forgotPassword": {
+      "title": "Şifremi Unuttum",
+      "subtitle": "E-posta adresinize sıfırlama bağlantısı göndereceğiz.",
+      "email": "E-posta",
+      "submit": "Sıfırlama Bağlantısı Gönder",
+      "successMsg": "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi.",
+      "backToLogin": "Giriş sayfasına dön"
+    },
+    "resetPassword": {
+      "title": "Şifre Sıfırla",
+      "newPassword": "Yeni Şifre",
+      "confirmPassword": "Şifre Tekrarı",
+      "submit": "Şifremi Güncelle",
+      "successMsg": "Şifreniz başarıyla güncellendi.",
+      "invalidToken": "Geçersiz veya süresi dolmuş bağlantı."
+    }
+  },
+  "org": {
+    "title": "Organizasyonlar",
+    "add": "Organizasyon Ekle",
+    "edit": "Organizasyonu Düzenle",
+    "name": "Organizasyon Adı",
+    "slug": "Kısa Ad (Slug)",
+    "type": "Tür",
+    "parent": "Üst Organizasyon",
+    "level": "Seviye",
+    "isActive": "Aktif",
+    "types": {
+      "merkez": "Merkez",
+      "bolge": "Bölge",
+      "il": "İl",
+      "ilce": "İlçe",
+      "birim": "Birim"
+    },
+    "tree": "Organizasyon Ağacı"
+  },
+  "roles": {
+    "admin": "Yönetici",
+    "koordinator": "Koordinatör",
+    "takim_lideri": "Takım Lideri",
+    "personel": "Personel",
+    "gonullu": "Gönüllü",
+    "gozlemci": "Gözlemci"
+  }
+}
