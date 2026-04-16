@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | AKEKOS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-light">
+<div class="d-flex" id="wrapper">
+  <%- include('../../partials/sidebar') %>
+  <div id="page-content-wrapper" class="flex-grow-1 d-flex flex-column">
+    <%- include('../../partials/topbar') %>
+    <main class="container-fluid py-3 px-4 flex-grow-1">
+      <%- include('../../partials/flash') %>
+
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="mb-0 fw-bold">
+          <i class="bi bi-<%= org ? 'pencil-square' : 'plus-circle-fill' %> me-2 text-warning"></i><%= title %>
+        </h4>
+        <a href="/admin/organizations" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-arrow-left me-1"></i>Listeye Dön
+        </a>
+      </div>
+
+      <% if (errors && errors.length > 0) { %>
+      <div class="alert alert-danger border-0 shadow-sm mb-4">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <% errors.forEach(e => { %><div><%= e %></div><% }) %>
+      </div>
+      <% } %>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <form action="<%= org ? '/admin/organizations/' + org._id : '/admin/organizations' %>" method="POST" novalidate>
+            <div class="row g-3">
+              <div class="col-md-8">
+                <label class="form-label fw-semibold small">Organizasyon Adı <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" name="name" value="<%= (org && org.name) || '' %>" required maxlength="120" placeholder="Örn: İstanbul Kent Arama Kurtarma">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-semibold small">Tür <span class="text-danger">*</span></label>
+                <select class="form-select" name="type" required>
+                  <% ['merkez','bolge','il','ilce','birim'].forEach(t => { %>
+                  <option value="<%= t %>" <%= (org && org.type === t) ? 'selected' : '' %>>
+                    <%= {merkez:'Merkez',bolge:'Bölge',il:'İl',ilce:'İlçe',birim:'Birim'}[t] %>
+                  </option>
+                  <% }) %>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Üst Organizasyon</label>
+                <select class="form-select" name="parentId">
+                  <option value="">-- Üst Organizasyon Yok (Kök) --</option>
+                  <% parents.forEach(p => { %>
+                  <option value="<%= p._id %>" <%= (org && String(org.parentId) === String(p._id)) ? 'selected' : '' %>>
+                    <%= '&nbsp;'.repeat(p.level * 3) %><%= p.level > 0 ? '↳ ' : '' %><%= p.name %> (<%= p.type %>)
+                  </option>
+                  <% }) %>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">E-posta</label>
+                <input type="email" class="form-control" name="email" value="<%= (org && org.email) || '' %>" placeholder="iletisim@organizasyon.tr">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Telefon</label>
+                <input type="text" class="form-control" name="phone" value="<%= (org && org.phone) || '' %>" placeholder="+90 XXX XXX XX XX">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Adres</label>
+                <input type="text" class="form-control" name="address" value="<%= (org && org.address) || '' %>">
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold small">Açıklama</label>
+                <textarea class="form-control" name="description" rows="2" maxlength="500"><%= (org && org.description) || '' %></textarea>
+              </div>
+              <div class="col-12">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="isActive" name="isActive" 
+                    <%= (!org || org.isActive !== false) ? 'checked' : '' %>>
+                  <label class="form-check-label fw-semibold small" for="isActive">Aktif</label>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="d-flex gap-2 justify-content-end">
+              <a href="/admin/organizations" class="btn btn-outline-secondary"><i class="bi bi-x-lg me-1"></i>İptal</a>
+              <button type="submit" class="btn btn-warning px-4">
+                <i class="bi bi-<%= org ? 'floppy-fill' : 'plus-lg' %> me-1"></i><%= org ? 'Güncelle' : 'Kaydet' %>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </main>
+    <%- include('../../partials/footer') %>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
